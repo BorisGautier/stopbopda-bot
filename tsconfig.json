@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "lib": ["dom"],
+    "outDir": "./build",
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "baseUrl": "./",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "moduleResolution": "Node"
+  },
+  "include": [
+    "./src/**/*",
+    ".eslintrc.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
