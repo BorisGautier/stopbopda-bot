@@ -19,7 +19,7 @@
     "start": "nodemon ./build/index.js",
     "prod": "node ./build/index.js",
     "test": "NODE_ENV=test jest",
-    "ngrok": "ngrok http 7432",
+    "ngrok": "ngrok http 3000",
     "lint": "eslint --fix",
     "bearer:token": "ts-node src/commands/bearerToken.ts",
     "search:tweet": "node ./build/commands/searchTweetAndSave.js",
