@@ -1,14 +1,20 @@
-FROM node:14-buster-slim
+# Use the official Node.js image
+FROM node:14
 
-RUN mkdir -p /home/app
+# Set the working directory
+WORKDIR /app
 
-WORKDIR /home/app
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
 
-COPY package.json .
-COPY build ./build
+# Install dependencies
+RUN npm install
 
-RUN yarn install --frozen-lockfile --production
+# Copy the rest of the application code
+COPY . .
 
-EXPOSE 7432
+# Expose the port specified in the .env file
+EXPOSE 3000
 
-ENTRYPOINT ["yarn", "prod"]
+# Command to run the application in production
+CMD ["npm", "start"]

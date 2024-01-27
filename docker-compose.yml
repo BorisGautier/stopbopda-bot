@@ -1,31 +1,25 @@
 version: '3'
-services:
-  # Service Node.js
-  stopbopdabot:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: stopbopdabot
-    restart: always
-    ports:
-      - "3000:7432"
-    environment:
-      NODE_ENV: production
-    command: yarn start
 
-  # Service MongoDB
-  mongodb:
-    image: mongo:latest
-    container_name: mongodb
-    restart: always
+services:
+  app:
+    build: .
     ports:
-      - "27017:27017"
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - mongodb
+    command: [ "npm", "start" ]
+
+  mongodb:
+    image: mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: secret
-      MONGO_INITDB_DATABASE: root
+    ports:
+      - "27017:27017"
     volumes:
-      - mongodb-data:/data/db
+      - mongodb_data:/data/db
 
 volumes:
-  mongodb-data:
+  mongodb_data:
